@@ -18,6 +18,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Admin Authentication Routes
+//add git hub
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
