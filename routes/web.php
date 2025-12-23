@@ -11,11 +11,18 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\AdmissionFormController;
 
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+
+Route::get('/admission-form', [AdmissionFormController::class, 'index'])
+     ->name('admission.form.store');
+Route::post('/admission-form', [AdmissionFormController::class, 'store'])
+     ->name('admission.store');
 
 // Admin Authentication Routes
 //add git hub
@@ -38,3 +45,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('contacts/{contact}/mark-unread', [AdminContactController::class, 'markAsUnread'])->name('contacts.mark-unread');
     });
 });
+

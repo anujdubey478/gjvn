@@ -1,8 +1,115 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Gyan Jyoti Vidya Niketan - Nurturing Future Leaders')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyan Jyoti Vidya Niketan - Nurturing Future Leaders</title>
+    <link rel="canonical" href="{{ url('/') }}">
+    <link rel="alternate" href="{{ url('/') }}" hreflang="en-IN">
 
-@push('styles')
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('template/css/style.css')}}" rel="stylesheet" />
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Gyan Jyoti Vidya Niketan is a leading school in Saket, IGNOU Road, offering quality education from Nursery to Class 8. Nurturing young minds with excellence in academics, activities, and values.">
+    <meta name="keywords" content="Gyan Jyoti Vidya Niketan, school in Saket, IGNOU Road school, best school in Saket Delhi, nursery school Saket, primary school IGNOU Road, middle school Saket, CBSE pattern school, English medium school in Saket, top schools near IGNOU, Gyan Jyoti school Delhi, nursery to 8th school in Saket, affordable school IGNOU road, best education for kids Saket">
+    <meta name="author" content="AKWebService.in">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="IN-DL">
+    <meta name="geo.placename" content="Saket, New Delhi">
+    <meta name="geo.position" content="28.5190;77.2060">
+    <meta name="ICBM" content="28.5190, 77.2060">
+    
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Gyan Jyoti Vidya Niketan - Best School in Saket (Nursery to 8th)">
+    <meta property="og:description" content="Top English Medium School in Saket near IGNOU Road offering Nursery to Class 8 education with modern teaching and values-based learning.">
+    <meta property="og:image" content="{{ asset('template/image/SchoolLibrary.webp') }}">
+    <meta property="og:image:alt" content="Gyan Jyoti Vidya Niketan campus image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_IN">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gyan Jyoti Vidya Niketan - School in Saket, IGNOU Road">
+    <meta name="twitter:description" content="Nurturing Future Leaders from Nursery to Class 8 at Saket, IGNOU Road, New Delhi.">
+    <meta name="twitter:image" content="{{ asset('template/image/SchoolLibrary.webp') }}">
+    <meta name="twitter:image:alt" content="Gyan Jyoti Vidya Niketan campus image">
+    <meta name="twitter:url" content="{{ url('/') }}">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="format-detection" content="telephone=yes,address=no,email=no">
+    
+    @php
+        $organizationSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'School',
+            'name' => 'Gyan Jyoti Vidya Niketan',
+            'url' => url('/'),
+            'logo' => asset('template/image/logo.png'),
+            'image' => asset('template/image/SchoolLibrary.webp'),
+            'description' => 'Top English Medium School in Saket near IGNOU Road offering Nursery to Class 8 education.',
+            'email' => 'mailto:gyanjyotimail@rediffmail.com',
+            'telephone' => '+91-9212747235',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'W-21, Anupam Garden, IGNOU Road, Saidulazab',
+                'addressLocality' => 'New Delhi',
+                'addressRegion' => 'DL',
+                'postalCode' => '110068',
+                'addressCountry' => 'IN',
+            ],
+            'sameAs' => [
+                'https://www.facebook.com/',
+                'https://www.instagram.com/',
+            ],
+        ];
+
+        $websiteSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'WebSite',
+            'url' => url('/'),
+            'potentialAction' => [
+                '@type' => 'SearchAction',
+                'target' => url('/') . '?s={search_term_string}',
+                'query-input' => 'required name=search_term_string',
+            ],
+        ];
+    @endphp
+    <script type="application/ld+json">
+        {!! json_encode($organizationSchema, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
+    </script>
+    <script type="application/ld+json">
+        {!! json_encode($websiteSchema, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
+    </script>
+
+
+</head>
 <style>
 .faculty-section {
   padding: 70px 0;
@@ -334,8 +441,44 @@
     border-radius: 4px;
   }
 </style>
-@endpush
-@section('content')
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="{{ asset('template/image/logo.png') }}" class="img-fluid logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#principal">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#programs">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#campus">Campus</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nwhs-main-content">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faculty">Faculty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <!-- Full Screen Image Slider -->
     <section id="home" class="hero-slider owl-carousel owl-theme">
@@ -465,7 +608,7 @@
 
 <!-- News Section -->
   <!-- =================== NEWS & EVENTS SECTION =================== -->
-        <section id="news" class="news-section py-5">
+        <section id="nwhs-main-content" class="news-section py-5">
   <div class="container">
     <div class="text-center mb-5">
       <h2 class="nwhs-section-heading display-5 fw-bold text-success">
@@ -1046,5 +1189,272 @@
             </div>
         </div>
     </section>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.820376910929!2d77.20434567536543!3d28.515051489406098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce1e749e46ab1%3A0xcfed5f9d018afe5a!2sGyan%20Jyoti%20Vidya%20Niketan!5e0!3m2!1sen!2sin!4v1753358831647!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
-@endsection
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.820376910929!2d77.20434567536543!3d28.515051489406098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce1e749e46ab1%3A0xcfed5f9d018afe5a!2sGyan%20Jyoti%20Vidya%20Niketan!5e0!3m2!1sen!2sin!4v1753358831647!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Gyan Jyoti Vidya Niketan</h4>
+                        <p>Providing quality education and nurturing future leaders since 1999.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul class="footer-links">
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#programs">Programs</a></li>
+                            <li><a href="#campus">Campus</a></li>
+                            <li><a href="#faculty">Faculty</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Resources</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">School Calendar</a></li>
+                            <li><a href="#">Parent Portal</a></li>
+                            <li><a href="#">Library</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Alumni</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h4>Contact Us</h4>
+                        <ul class="footer-links">
+                            <li><i class="bi bi-geo-alt me-2"></i> <b>GYAN JYOTI VIDYA NIKETAN</b>
+W-21, Anupam Garden, Ignou Road, Saidulazab, New Delhi -110068</li>
+                            <li><i class="bi bi-telephone me-2"></i> +91 9212747235</li>
+                            <li><i class="bi bi-envelope me-2"></i> gyanjyotimail@rediffmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+            <p>
+            &copy; 2024 Gyan Jyoti Vidya Niketan. All rights reserved. |
+            Developed by <a href="https://akwebservice.in" target="_blank" style="color: #fff; text-decoration: underline;">AK Web Service</a>
+            </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+        <!-- Magnific Popup JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Initialize Full Screen Hero Slider
+        // Initialize Full Screen Hero Slider
+        $('.hero-slider').owlCarousel({
+            items: 1,
+            loop: true,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 6000,
+            autoplayHoverPause: true,
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
+            navText: ['<i class="bi bi-chevron-left"></i>', '<i class="bi bi-chevron-right"></i>'],
+            responsive: {
+                0: {
+                    nav: false
+                },
+                768: {
+                    nav: true
+                }
+            }
+        });
+
+        // Initialize Magnific Popup for Gallery
+        $('.image-popup').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            fixedContentPos: true,
+            mainClass: 'mfp-with-zoom',
+            zoom: {
+                enabled: true,
+                duration: 300,
+                easing: 'ease-in-out',
+                opener: function(openerElement) {
+                    return openerElement.is('img') ? openerElement : openerElement.find('img');
+                }
+            },
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0,1],
+                tCounter: '%curr% of %total%'
+            },
+            image: {
+                titleSrc: function(item) {
+                    return item.el.attr('title');
+                }
+            },
+            callbacks: {
+                open: function() {
+                    $('body').css('overflow', 'hidden');
+                },
+                close: function() {
+                    $('body').css('overflow', 'auto');
+                }
+            }
+        });
+        
+
+
+
+
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Counter animation for stats
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const countUp = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => countUp(counter), 10);
+            } else {
+                counter.innerText = target;
+                // Add appropriate symbols
+                if (target === 25 || target === 1200 || target === 20) {
+                    counter.innerText += '+';
+                } else if (target === 100) {
+                    counter.innerText += '%';
+                }
+            }
+        };
+
+        // Trigger counter animation when stats section is in view
+        const statsSection = document.querySelector('.stats-section');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    counters.forEach(counter => {
+                        countUp(counter);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsObserver.observe(statsSection);
+
+
+
+
+        // filter gallery 
+$('.filters ul li').click(function(){
+    $('.filters ul li').removeClass('active');
+    $(this).addClass('active');
+    
+    var data = $(this).attr('data-filter');
+    $grid.isotope({
+      filter: data
+    })
+  });
+  
+  var $grid = $(".grid").isotope({
+    itemSelector: ".all",
+    percentPosition: true,
+    masonry: {
+      columnWidth: ".all"
+    }
+  })
+
+//   popup 
+$(document).ready(function() {
+	$(".gallery").magnificPopup({
+		delegate: "a",
+		type: "image",
+		tLoading: "Loading image #%curr%...",
+		mainClass: "mfp-img-mobile",
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+		}
+	});
+});
+    </script>
+</body>
+
+</html>
