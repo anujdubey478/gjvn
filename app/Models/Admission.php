@@ -9,4 +9,10 @@ class Admission extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+
+    protected $attributes = [
+    'status' => 'pending',
+    ];
+
 }

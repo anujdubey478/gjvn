@@ -43,6 +43,7 @@ return new class extends Migration
             $table->string('last_school')->nullable();
             $table->string('admission_standard');
             $table->string('sibling_details')->nullable();
+            $table->string('status')->default('pending');
 
             $table->timestamps();
         });

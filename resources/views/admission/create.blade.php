@@ -157,8 +157,17 @@
                     <input type="text" name="parents_income" value="{{ old('parents_income') }}" class="form-control">
                 </div>
                 <div class="col-md-4">
-                    <label class="form-label">Category (SC/ST/OBC/GEN)</label>
-                    <input type="text" name="category" value="{{ old('category') }}" class="form-control">
+                <label class="form-label">Category <span class="required">*</span></label>
+                <select name="category" class="form-select @error('category') is-invalid @enderror" requ>
+                <option value="">Select Category</option>
+                <option value="GEN" {{ old('category') == 'GEN' ? 'selected' : '' }}>GEN</option>
+                <option value="SC" {{ old('category') == 'SC' ? 'selected' : '' }}>SC</option>
+                <option value="ST" {{ old('category') == 'ST' ? 'selected' : '' }}>ST</option>
+                <option value="OBC" {{ old('category') == 'OBC' ? 'selected' : '' }}>OBC</option>
+                </select>
+                @error('category')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Aadhar No.</label>

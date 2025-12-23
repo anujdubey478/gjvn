@@ -36,6 +36,7 @@ class AdmissionFormController extends Controller
             'mother_name'        => 'required|string|max:255',
             'father_name'        => 'required|string|max:255',
             'residential_address'=> 'required|string',
+            'category'          =>  'required|in:GEN,SC,ST,OBC',
             'res_mobile'         => 'required|digits:10',
             'admission_standard' => 'required|string',
             'photo'              => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // 2MB Max
@@ -46,15 +47,17 @@ class AdmissionFormController extends Controller
             'aadhar_no.digits'  => 'Aadhar number must be 12 digits.',
         ]);
 
-        // 2. Handle File Upload
+        $admission = new Admission();
+        $admission->fill($request->except('photo'));
+        
+        // Explicitly set default status for backend tracking
+        $admission->status = 'pending'; 
+        
         if ($request->hasFile('photo')) {
-            $path = $request->file('photo')->store('student_photos', 'public');
-            $validated['photo_path'] = $path;
+            $admission->photo_path = $request->file('photo')->store('student_photos', 'public');
         }
 
-        // 3. Save to MySQL
-        // Note: Using fill() or create() requires $fillable in Model
-        Admission::create($request->except('photo') + ['photo_path' => $validated['photo_path'] ?? null]);
+        $admission->save();
 
         return redirect()->back()->with('success', 'Admission form submitted successfully!');
     }
