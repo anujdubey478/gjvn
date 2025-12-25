@@ -39,6 +39,9 @@
                         <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
                             <i class="bi bi-speedometer2 me-2"></i> Dashboard
                         </a>
+                        <a class="nav-link {{ request()->routeIs('admin.admissions.*') ? 'active' : '' }}" href="{{ route('admin.admissions.index') }}">
+                            <i class="bi bi-images me-2"></i> Admission
+                        </a>
                         <a class="nav-link {{ request()->routeIs('admin.toppers.*') ? 'active' : '' }}" href="{{ route('admin.toppers.index') }}">
                             <i class="bi bi-trophy me-2"></i> Toppers
                         </a>
@@ -102,7 +105,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    @yield('scripts')
+    @stack('scripts')
 </body>
 </html>
 

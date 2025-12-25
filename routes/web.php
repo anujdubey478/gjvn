@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdmissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AuthController;
@@ -43,6 +44,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('contacts', AdminContactController::class)->only(['index', 'show', 'destroy']);
         Route::post('contacts/{contact}/mark-read', [AdminContactController::class, 'markAsRead'])->name('contacts.mark-read');
         Route::post('contacts/{contact}/mark-unread', [AdminContactController::class, 'markAsUnread'])->name('contacts.mark-unread');
+
+        Route::get('/admissions', [AdmissionController::class, 'index'])->name('admissions.index');
+        Route::get('/admissions/{admission}', [AdmissionController::class, 'show'])->name('admissions.show');
+        Route::patch('/admissions/{admission}/status', [AdmissionController::class, 'updateStatus'])->name('admissions.updateStatus');
     });
 });
 

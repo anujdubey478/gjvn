@@ -38,6 +38,7 @@ class AdmissionFormController extends Controller
             'residential_address'=> 'required|string',
             'category'          =>  'required|in:GEN,SC,ST,OBC',
             'res_mobile'         => 'required|digits:10',
+            'email'      => 'nullable|email:rfc,dns',
             'admission_standard' => 'required|string',
             'photo'              => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // 2MB Max
             'aadhar_no'          => 'nullable|digits:12',

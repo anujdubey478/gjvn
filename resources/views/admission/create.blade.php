@@ -142,9 +142,16 @@
                     @error('residential_address') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     <div class="row mt-2">
                         <div class="col-md-6">
+                            <label class="form-label">Mobile <span class="required">*</span></label>
                             <input type="text" name="res_mobile" value="{{ old('res_mobile') }}" 
                                    class="form-control mt-1 @error('res_mobile') is-invalid @enderror" placeholder="Mobile No.">
                             @error('res_mobile') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="text" name="email" value="{{ old('email') }}" 
+                                   class="form-control mt-1 @error('email') is-invalid @enderror" placeholder="Email-id.">
+                            @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
                 </div>
